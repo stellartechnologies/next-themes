@@ -8,15 +8,15 @@ const colorSchemes = ['light', 'dark']
 const MEDIA = '(prefers-color-scheme: dark)'
 const isServer = typeof window === 'undefined'
 const ThemeContext = React.createContext<UseThemeProps | undefined>(undefined)
-const defaultContext: UseThemeProps = { setTheme: _ => {}, themes: [] }
+const defaultContext: UseThemeProps = { setTheme: _ => { }, themes: [] }
 
 export const useTheme = () => React.useContext(ThemeContext) ?? defaultContext
 
-export const ThemeProvider = (props: ThemeProviderProps): React.ReactNode => {
+export const ThemeProvider = (props: ThemeProviderProps): React.JSX.Element => {
   const context = React.useContext(ThemeContext)
 
   // Ignore nested context providers, just passthrough children
-  if (context) return props.children
+  if (context) return <>{props.children}</> // Wrap props.children in a React fragment
   return <Theme {...props} />
 }
 
@@ -226,7 +226,7 @@ const disableAnimation = () => {
 
   return () => {
     // Force restyle
-    ;(() => window.getComputedStyle(document.body))()
+    ; (() => window.getComputedStyle(document.body))()
 
     // Wait for next tick before removing
     setTimeout(() => {

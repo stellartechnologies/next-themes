@@ -1,6 +1,6 @@
 {
-  "name": "next-themes",
-  "version": "0.3.0",
+  "name": "next-themes-stl",
+  "version": "0.3.1",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -32,5 +32,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/pacocoursey/next-themes.git"
+  },
+  "publishConfig": {
+    "stellartechnologies:registry": "https://npm.pkg.github.com"
   }
 }
